@@ -67,19 +67,10 @@ function insertHelpers (node, parent, chunks) {
     node.source = function () {
         return chunks.slice(node.start, node.end).join('');
     };
+
+    node.rewrite = rewrite;
     
-    if (node.update && typeof node.update === 'object') {
-        var prev = node.update;
-        forEach(objectKeys(prev), function (key) {
-            update[key] = prev[key];
-        });
-        node.update = update;
-    }
-    else {
-        node.update = update;
-    }
-    
-    function update (s) {
+    function rewrite (s) {
         chunks[node.start] = s;
         for (var i = node.start + 1; i < node.end; i++) {
             chunks[i] = '';

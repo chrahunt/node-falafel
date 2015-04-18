@@ -84,13 +84,9 @@ update functions on children from parent nodes.
 Return the source for the given node, including any modifications made to
 children nodes.
 
-## node.update(s)
+## node.rewrite(s)
 
 Transform the source for the present node to the string `s`.
-
-Note that in `'ForStatement'` node types, there is an existing subnode called
-`update`. For those nodes all the properties are copied over onto the
-`node.update()` function.
 
 ## node.parent
 
